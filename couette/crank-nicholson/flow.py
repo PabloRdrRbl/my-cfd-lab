@@ -7,7 +7,7 @@ import thomas
 # Grid parameters
 
 N = 20 # Number of intervals
-Nt = 60 # Number of time steps
+Nt = 360 # Number of time steps
 dy = 1 / (N)  # Non-dimensional problem
 
 u = np.zeros(N + 1)
@@ -57,3 +57,5 @@ for t in range(Nt):
     u[1: -1] = thomas.tridiagonal(d.copy(), dd.copy(), dd.copy(), K.copy())
 
 print(u)
+
+np.savetxt('implicit%d.out' % (Nt), u, delimiter=',')
